@@ -21,13 +21,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScanner
-import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import com.goyals.mercuryscannerapp.R
 import com.goyals.mercuryscannerapp.ui.EditFormActivity
 import com.goyals.mercuryscannerapp.utils.AppUtils
-import kotlinx.android.synthetic.main.activity_aadhar_scan.*
 import java.util.concurrent.Executors
 import kotlin.math.abs
 import kotlin.math.max
@@ -153,7 +151,7 @@ class AadharScanActivity : AppCompatActivity() {
         Log.e(TAG, it.message!!)
       }
       .addOnCompleteListener {
-        Log.e(TAG, "complete" + it.toString())
+        Log.e(TAG, "complete$it")
         imageProxy.close()
       }
   }

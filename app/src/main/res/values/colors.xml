@@ -6,4 +6,7 @@
 
   <color name="color00">#FF000000</color>
   <color name="colorFF">#FFFFFFFF</color>
+  <color name="color_c1">#c1c1c1</color>
+  <color name="colorError">#ea2b10</color>
+
 </resources>

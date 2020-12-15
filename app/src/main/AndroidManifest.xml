@@ -19,7 +19,11 @@
       android:theme="@style/Theme.MercuryScannerApp">
     <activity
         android:name=".ui.EditFormActivity"
+        android:label="@string/edit_form"
         android:launchMode="singleTop">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".MainActivity" />
 
     </activity>
 

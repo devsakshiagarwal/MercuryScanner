@@ -13,4 +13,4 @@ data class AadharInfo(@Json(name = "uid") var uid: String = "",
   @Json(name = "dob") var dob: String = "",
   @Json(name = "yob") var yob: String = "",
   @Json(name = "address") var address: String = "",
-  @Json(name = "pincode") var pincode: String = "") : Parcelable
+  @Json(name = "age") var age: String = "") : Parcelable
