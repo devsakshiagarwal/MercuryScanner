@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+  <style name="Theme.MercuryScannerApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+    <item name="colorOnPrimary">@color/colorFF</item>
+    <item name="android:statusBarColor" tools:targetApi="l">
+      ?attr/colorPrimaryVariant
+    </item>
+  </style>
+
+  <style name="Theme.MercuryScannerApp.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+  </style>
+
+  <style name="Theme.MercuryScannerApp.AppBarOverlay"
+      parent="ThemeOverlay.AppCompat.ActionBar" />
+
+  <style name="Theme.MercuryScannerApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
