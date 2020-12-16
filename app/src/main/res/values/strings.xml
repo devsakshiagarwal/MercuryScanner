@@ -12,11 +12,7 @@
   <string name="menu_gallery">Gallery</string>
   <string name="menu_slideshow">Slideshow</string>
 
-  <string name="save_menu">
-    <b>
-      <font size="15">Save</font>
-    </b>
-  </string>
+  <string name="save_menu">Save</string>
 
   // aadhar related strings
   <string name="uid">UID Number</string>
