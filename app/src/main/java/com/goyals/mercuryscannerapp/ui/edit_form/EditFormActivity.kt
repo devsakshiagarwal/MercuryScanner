@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import com.goyals.mercuryscannerapp.R
 import com.goyals.mercuryscannerapp.arch.Result
+import com.goyals.mercuryscannerapp.model.SharedPref
 import com.goyals.mercuryscannerapp.model.schema.AadharRequest
 import com.goyals.mercuryscannerapp.utils.AppUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -71,6 +72,15 @@ class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
     editFormViewModel.genderLiveData.observe(this, Observer {
       et_gender.setText(it!!)
     })
+    et_location.setOnClickListener {
+      LocationFragment.newInstance()
+        .show(supportFragmentManager, "location_fragment")
+    }
+    editFormViewModel.locationLiveData.observe(this, Observer {
+      et_location.setText(it!!)
+      SharedPref(this).setLocation(it)
+    })
+    et_location.setText(SharedPref(this).getLocation())
     et_dob.setOnClickListener { handleDob() }
   }
 

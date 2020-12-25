@@ -12,6 +12,8 @@ import com.goyals.mercuryscannerapp.R.layout
 import com.goyals.mercuryscannerapp.arch.Result.Status.ERROR
 import com.goyals.mercuryscannerapp.arch.Result.Status.LOADING
 import com.goyals.mercuryscannerapp.arch.Result.Status.SUCCESS
+import com.goyals.mercuryscannerapp.model.schema.AadharInfo
+import com.goyals.mercuryscannerapp.model.schema.AadharResponse
 import com.goyals.mercuryscannerapp.ui.edit_form.EditFormActivity
 import com.goyals.mercuryscannerapp.ui.scanner.AadharScanActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -63,8 +65,9 @@ class MainActivity : AppCompatActivity() {
         when (it.status) {
           SUCCESS -> {
             progress_bar.visibility = View.GONE
+            val response : AadharResponse = it.data!!
             val aadharAdapter = AadharAdapter()
-            aadharAdapter.setAddress(it.data!!)
+            aadharAdapter.setAddress(response.aadharList)
             rv_main.apply {
               layoutManager = LinearLayoutManager(this@MainActivity)
               adapter = aadharAdapter

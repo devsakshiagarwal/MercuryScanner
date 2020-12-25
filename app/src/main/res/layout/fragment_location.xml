@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorFF"
+    android:orientation="vertical"
+    >
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_1"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Coronation Hospital, Dehradun"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_2"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Gandhi Hospital, Dehradun"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_3"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="SPS Hospital, Rishikesh"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_4"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Vikasnagar CHC, Dehradun"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_5"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Premnagar CHC, Dehradun"
+      />
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_6"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Mussorie Hospital, Mussorie"
+      />
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_7"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Vikasnagar Checkpost, Dehradun"
+      />
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_8"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Asharodi Checkpost, Dehradun"
+      />
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_9"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Railway, Dehradun"
+      />
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_10"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="ISBT, Dehradun"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_11"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Narender Nagar Checkpost, Tehri"
+      />
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_12"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Roorki Civil Hospital, Roorki"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_13"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Harmilap Hospital, Haridwar"
+      />
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_14"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="CHC Jwallapur, Haridwar"
+      />
+
+</LinearLayout>

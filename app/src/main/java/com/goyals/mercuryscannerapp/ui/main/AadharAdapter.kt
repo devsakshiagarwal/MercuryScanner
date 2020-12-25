@@ -46,7 +46,7 @@ class AadharAdapter() : RecyclerView.Adapter<AadharViewHolder>() {
 
     fun bind(aadharInfo: AadharInfo) {
       tvName.text = aadharInfo.name
-      tvAge.text = AppUtils.getAge(aadharInfo.dob.toLong())
+      //tvAge.text = AppUtils.getAge(aadharInfo.dob.toLong())
       tvId.text = aadharInfo.proofNumber
       tvAddress.text = aadharInfo.address
       tvPhone.text = aadharInfo.phone

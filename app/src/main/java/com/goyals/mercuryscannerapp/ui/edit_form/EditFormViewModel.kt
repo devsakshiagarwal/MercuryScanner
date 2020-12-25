@@ -11,6 +11,7 @@ class EditFormViewModel @ViewModelInject constructor(private val aadharRepo: Aad
   ViewModel() {
   val idTypeLiveData = MutableLiveData<String>()
   val genderLiveData = MutableLiveData<String>()
+  val locationLiveData = MutableLiveData<String>()
 
   fun setIdType(idType: String) {
     idTypeLiveData.value = idType
@@ -18,6 +19,10 @@ class EditFormViewModel @ViewModelInject constructor(private val aadharRepo: Aad
 
   fun setGender(gender: String) {
     genderLiveData.value = gender
+  }
+
+  fun setLocation(gender: String) {
+    locationLiveData.value = gender
   }
 
   fun createUser(aadharRequest: AadharRequest) =
