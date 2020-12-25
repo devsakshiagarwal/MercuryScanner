@@ -7,6 +7,18 @@
     <item name="fontFamily">@font/opensans_light</item>
   </style>
 
+  <style name="text_13_00_bold">
+    <item name="android:textColor">@color/color00</item>
+    <item name="android:textSize">13sp</item>
+    <item name="fontFamily">@font/opensans_bold</item>
+  </style>
+
+  <style name="text_13_ff_bold">
+    <item name="android:textColor">@color/colorFF</item>
+    <item name="android:textSize">13sp</item>
+    <item name="fontFamily">@font/opensans_semi_bold</item>
+  </style>
+
   <style name="et_16_5c_semi_bold" parent="Base.Widget.AppCompat.EditText">
     <item name="android:backgroundTint">@color/color_c1</item>
     <item name="android:textColor">@color/color00</item>

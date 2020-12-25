@@ -1,12 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-  <style name="Theme.MercuryScannerApp" parent="Theme.MaterialComponents.Light">
+  <style name="Theme.MercuryScannerApp" parent="ThemeOverlay.MaterialComponents.Dark">
     <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+    <item name="colorPrimaryVariant">@color/colorFF</item>
     <item name="colorOnPrimary">@color/colorFF</item>
-    <item name="android:statusBarColor" tools:targetApi="l">
-      ?attr/colorPrimaryVariant
-    </item>
+    <item name="android:statusBarColor" tools:targetApi="l">#000000</item>
   </style>
 
   <style name="Theme.MercuryScannerApp.NoActionBar">
@@ -14,8 +12,7 @@
     <item name="windowNoTitle">true</item>
   </style>
 
-  <style name="Theme.MercuryScannerApp.AppBarOverlay"
-      parent="ThemeOverlay.AppCompat.ActionBar" />
+  <style name="Theme.MercuryScannerApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
 
   <style name="Theme.MercuryScannerApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

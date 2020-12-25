@@ -24,7 +24,7 @@ import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import com.goyals.mercuryscannerapp.R
-import com.goyals.mercuryscannerapp.ui.EditFormActivity
+import com.goyals.mercuryscannerapp.ui.edit_form.EditFormActivity
 import com.goyals.mercuryscannerapp.utils.AppUtils
 import java.util.concurrent.Executors
 import kotlin.math.abs

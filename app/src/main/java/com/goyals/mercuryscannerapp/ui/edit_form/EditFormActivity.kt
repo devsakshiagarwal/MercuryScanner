@@ -1,4 +1,4 @@
-package com.goyals.mercuryscannerapp.ui
+package com.goyals.mercuryscannerapp.ui.edit_form
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -43,13 +43,13 @@ class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
     actionBar?.setDisplayHomeAsUpEnabled(true)
     if (intent.getParcelableExtra<AadharInfo>("aadhar_info") != null) {
       val aadharInfo = intent.getParcelableExtra<AadharInfo>("aadhar_info")!!
-      et_uid.setText(aadharInfo.uid)
-      et_name.setText(aadharInfo.name)
-      et_dob.setText(aadharInfo.dob)
-      et_yob.setText(aadharInfo.yob)
-      et_address.setText(aadharInfo.address)
-      et_age.setText(aadharInfo.age)
-      et_gender.setText(aadharInfo.gender)
+      et_uid.setText(aadharInfo.customerId)
+      et_name.setText(aadharInfo.customerName)
+      et_dob.setText(aadharInfo.customerDob)
+//      et_yob.setText(aadharInfo.yob)
+      et_address.setText(aadharInfo.customerAddress)
+//      et_age.setText(aadharInfo.a)
+      et_gender.setText(aadharInfo.customerGender)
     }
   }
 }

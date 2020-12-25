@@ -11,20 +11,30 @@
   <uses-permission android:name="android.permission.INTERNET" />
 
   <application
+      android:name=".MercuryApp"
       android:allowBackup="true"
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
-      android:theme="@style/Theme.MercuryScannerApp">
+      android:theme="@style/Theme.MercuryScannerApp"
+      android:usesCleartextTraffic="true">
     <activity
-        android:name=".ui.EditFormActivity"
+        android:name=".ui.login.LoginActivity"
+        android:label="@string/title_activity_login">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity
+        android:name=".ui.edit_form.EditFormActivity"
         android:label="@string/edit_form"
         android:launchMode="singleTop">
       <meta-data
           android:name="android.support.PARENT_ACTIVITY"
-          android:value=".MainActivity" />
-
+          android:value=".ui.main.MainActivity" />
     </activity>
 
     <meta-data
@@ -33,14 +43,10 @@
 
     <activity android:name=".ui.scanner.AadharScanActivity" />
     <activity
-        android:name=".MainActivity"
+        android:name=".ui.main.MainActivity"
         android:label="@string/app_name"
-        android:theme="@style/Theme.MercuryScannerApp.NoActionBar">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
+        android:theme="@style/Theme.MercuryScannerApp.NoActionBar" />
+
   </application>
 
 </manifest>
