@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorFF"
+    android:orientation="vertical"
+    >
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_aadhar"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Aadhar Card"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_pan"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Pan Card"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_passport"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Passport"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_voter"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="Voter Id"
+      />
+
+</LinearLayout>

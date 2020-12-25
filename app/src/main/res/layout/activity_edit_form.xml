@@ -26,6 +26,25 @@
           style="@style/text_13_00_light"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:text="@string/id_type"
+          />
+
+      <androidx.appcompat.widget.AppCompatEditText
+          android:id="@+id/et_id_type"
+          style="@style/et_16_5c_semi_bold"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:focusableInTouchMode="false"
+          android:text="Pan Card"
+          android:inputType="numberDecimal"
+          android:maxLines="1"
+          />
+
+      <androidx.appcompat.widget.AppCompatTextView
+          style="@style/text_13_00_light"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp_16"
           android:text="@string/uid"
           />
 
