@@ -34,11 +34,6 @@ object AppUtils {
     }
     Log.v("AppUtils",
       "name is: $name, uid is: $uid, gender is: $gender, yob is: $yob, address is: $address, dob is: $dob, pincode is: $pinCode")
-//    return AadharInfo(uid, name, if (gender.equals("M", true)) {
-//      "Male"
-//    } else {
-//      "Female"
-//    }, dob, yob, "$address, $pinCode", getAge(getTimeStampInMillis(yob)))
     return AadharInfo()
   }
 
@@ -55,7 +50,7 @@ object AppUtils {
     return rawAddress.replace("\"", "")
   }
 
-  private fun getAge(dateOfBirth: Long): String {
+  fun getAge(dateOfBirth: Long): String {
     val dobLocal = Calendar.getInstance()
     dobLocal.timeInMillis = dateOfBirth
     val dob = Calendar.getInstance()
@@ -84,5 +79,11 @@ object AppUtils {
     } catch (exception: Exception) {
       0
     }
+  }
+
+  fun getFormattedDob(date: Int,
+    month: Int,
+    year: Int): String {
+    return "$year-$month-$date"
   }
 }

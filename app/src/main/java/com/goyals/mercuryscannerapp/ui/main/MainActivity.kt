@@ -9,15 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.goyals.mercuryscannerapp.R.layout
-import com.goyals.mercuryscannerapp.arch.Result
 import com.goyals.mercuryscannerapp.arch.Result.Status.ERROR
 import com.goyals.mercuryscannerapp.arch.Result.Status.LOADING
 import com.goyals.mercuryscannerapp.arch.Result.Status.SUCCESS
 import com.goyals.mercuryscannerapp.ui.edit_form.EditFormActivity
 import com.goyals.mercuryscannerapp.ui.scanner.AadharScanActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_login.et_password
-import kotlinx.android.synthetic.main.activity_login.et_username
 import kotlinx.android.synthetic.main.app_bar_main.fab
 import kotlinx.android.synthetic.main.app_bar_main.fab_other_id
 import kotlinx.android.synthetic.main.app_bar_main.fab_scan_id
@@ -36,10 +33,14 @@ class MainActivity : AppCompatActivity() {
     initViews()
   }
 
+  override fun onResume() {
+    super.onResume()
+    getCustomers()
+  }
+
   private fun initViews() {
     setSupportActionBar(toolbar)
     handleFabs()
-    getCustomers()
   }
 
   private fun handleFabs() {

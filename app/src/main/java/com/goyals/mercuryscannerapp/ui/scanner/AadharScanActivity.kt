@@ -40,7 +40,6 @@ class AadharScanActivity : AppCompatActivity() {
   private var analysisUseCase: ImageAnalysis? = null
   private val screenAspectRatio: Int
     get() {
-      // Get screen metrics used to setup camera for full screen resolution
       val metrics =
         DisplayMetrics().also { previewView?.display?.getRealMetrics(it) }
       return aspectRatio(metrics.widthPixels, metrics.heightPixels)
@@ -101,11 +100,6 @@ class AadharScanActivity : AppCompatActivity() {
   }
 
   private fun bindAnalyseUseCase() {
-    // Note that if you know which format of barcode your app is dealing with, detection will be
-    // faster to specify the supported barcode formats one by one, e.g.
-    //BarcodeScannerOptions.Builder()
-    //  .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
-    //  .build()
     val barcodeScanner: BarcodeScanner = BarcodeScanning.getClient()
 
     if (cameraProvider == null) {
@@ -119,7 +113,6 @@ class AadharScanActivity : AppCompatActivity() {
       .setTargetAspectRatio(screenAspectRatio)
       .setTargetRotation(previewView!!.display.rotation)
       .build()
-    // Initialize our background executor
     val cameraExecutor = Executors.newSingleThreadExecutor()
 
     analysisUseCase?.setAnalyzer(cameraExecutor,

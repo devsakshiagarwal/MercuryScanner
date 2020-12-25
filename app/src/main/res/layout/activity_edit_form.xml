@@ -35,9 +35,9 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:focusableInTouchMode="false"
-          android:text="Pan Card"
           android:inputType="numberDecimal"
           android:maxLines="1"
+          android:text="Pan Card"
           />
 
       <androidx.appcompat.widget.AppCompatTextView
@@ -145,7 +145,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_8"
             android:layout_weight="1"
-            android:focusableInTouchMode="false"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
             android:hint="@string/hint_yob"
             />
 
@@ -216,6 +217,7 @@
           style="@style/et_16_5c_semi_bold"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:focusableInTouchMode="false"
           android:hint="@string/hint_generic"
           />
 

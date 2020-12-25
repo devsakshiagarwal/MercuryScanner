@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.goyals.mercuryscannerapp.R
 import com.goyals.mercuryscannerapp.model.schema.AadharInfo
 import com.goyals.mercuryscannerapp.ui.main.AadharAdapter.AadharViewHolder
+import com.goyals.mercuryscannerapp.utils.AppUtils
 
 class AadharAdapter() : RecyclerView.Adapter<AadharViewHolder>() {
   private lateinit var aadharInfo: List<AadharInfo>
@@ -44,13 +45,13 @@ class AadharAdapter() : RecyclerView.Adapter<AadharViewHolder>() {
       itemView.findViewById(R.id.tv_result)
 
     fun bind(aadharInfo: AadharInfo) {
-      tvName.text = aadharInfo.customerName
-      tvAge.text = aadharInfo.customerDob
-      tvId.text = aadharInfo.customerUid
-      tvAddress.text = aadharInfo.customerAddress
-      tvPhone.text = aadharInfo.customerPhone
-      tvGender.text = aadharInfo.customerGender
-      //tvResult.text = aadharInfo.res
+      tvName.text = aadharInfo.name
+      tvAge.text = AppUtils.getAge(aadharInfo.dob.toLong())
+      tvId.text = aadharInfo.proofNumber
+      tvAddress.text = aadharInfo.address
+      tvPhone.text = aadharInfo.phone
+      tvGender.text = aadharInfo.gender
+      tvResult.text = aadharInfo.covidResultToShow
     }
   }
 }
