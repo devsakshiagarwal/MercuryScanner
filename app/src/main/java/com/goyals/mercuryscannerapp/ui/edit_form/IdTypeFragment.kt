@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.goyals.mercuryscannerapp.R
 import kotlinx.android.synthetic.main.fragment_id_type.tv_aadhar
+import kotlinx.android.synthetic.main.fragment_id_type.tv_dl
+import kotlinx.android.synthetic.main.fragment_id_type.tv_other
 import kotlinx.android.synthetic.main.fragment_id_type.tv_pan
 import kotlinx.android.synthetic.main.fragment_id_type.tv_passport
 import kotlinx.android.synthetic.main.fragment_id_type.tv_voter
@@ -35,19 +37,27 @@ class IdTypeFragment : BottomSheetDialogFragment() {
 
   private fun initView() {
     tv_aadhar.setOnClickListener {
-      editFormViewModel.setIdType("Aadhar Card")
+      editFormViewModel.setIdType(tv_aadhar.text.toString())
       dismiss()
     }
     tv_pan.setOnClickListener {
-      editFormViewModel.setIdType("Pan Card")
+      editFormViewModel.setIdType(tv_pan.text.toString())
       dismiss()
     }
     tv_passport.setOnClickListener {
-      editFormViewModel.setIdType("Passport")
+      editFormViewModel.setIdType(tv_passport.text.toString())
       dismiss()
     }
     tv_voter.setOnClickListener {
-      editFormViewModel.setIdType("Voter Id Card")
+      editFormViewModel.setIdType(tv_voter.text.toString())
+      dismiss()
+    }
+    tv_dl.setOnClickListener {
+      editFormViewModel.setIdType(tv_dl.text.toString())
+      dismiss()
+    }
+    tv_other.setOnClickListener {
+      editFormViewModel.setIdType(tv_other.text.toString())
       dismiss()
     }
   }

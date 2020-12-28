@@ -10,5 +10,5 @@ import retrofit2.http.POST
 interface LoginApi {
   @FormUrlEncoded @POST(Urls.LOGIN) suspend fun doLogin(@Field(
     "login") login: String,
-    @Field("password") password: String): Response<List<Login>>
+    @Field("password") password: String): Response<Login>
 }

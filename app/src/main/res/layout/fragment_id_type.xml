@@ -12,7 +12,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="@dimen/dp_16"
-      android:text="Aadhar Card"
+      android:text="@string/aadhar_card"
       />
 
   <View
@@ -27,7 +27,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="@dimen/dp_16"
-      android:text="Pan Card"
+      android:text="@string/pan_card"
       />
 
   <View
@@ -42,7 +42,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="@dimen/dp_16"
-      android:text="Passport"
+      android:text="@string/passport"
       />
 
   <View
@@ -57,7 +57,37 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="@dimen/dp_16"
-      android:text="Voter Id"
+      android:text="@string/voter_id"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_dl"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="@string/dl"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="#707070"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_other"
+      style="@style/text_13_00_bold"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_16"
+      android:text="@string/other"
       />
 
 </LinearLayout>

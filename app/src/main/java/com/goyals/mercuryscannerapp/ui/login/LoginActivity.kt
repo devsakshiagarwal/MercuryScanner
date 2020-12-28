@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
             when (it.status) {
               Result.Status.SUCCESS -> {
                 progress_bar.visibility = View.GONE
-                proceedWithLogin(it.data!![0])
+                proceedWithLogin(it.data!!)
               }
               Result.Status.ERROR -> {
                 progress_bar.visibility = View.GONE

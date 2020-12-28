@@ -2,6 +2,7 @@ package com.goyals.mercuryscannerapp.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -67,7 +68,9 @@ class MainActivity : AppCompatActivity() {
             progress_bar.visibility = View.GONE
             val response : AadharResponse = it.data!!
             val aadharAdapter = AadharAdapter()
-            aadharAdapter.setAddress(response.aadharList)
+            Log.d("main_act", "list length: ${response.customerList
+              .aadharList.size}")
+            aadharAdapter.setAddress(response.customerList.aadharList)
             rv_main.apply {
               layoutManager = LinearLayoutManager(this@MainActivity)
               adapter = aadharAdapter

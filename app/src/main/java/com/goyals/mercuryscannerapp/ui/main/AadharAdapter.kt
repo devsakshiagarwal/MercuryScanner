@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.goyals.mercuryscannerapp.R
 import com.goyals.mercuryscannerapp.model.schema.AadharInfo
 import com.goyals.mercuryscannerapp.ui.main.AadharAdapter.AadharViewHolder
-import com.goyals.mercuryscannerapp.utils.AppUtils
 
 class AadharAdapter() : RecyclerView.Adapter<AadharViewHolder>() {
   private lateinit var aadharInfo: List<AadharInfo>

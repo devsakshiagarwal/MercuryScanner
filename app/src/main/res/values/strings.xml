@@ -4,18 +4,18 @@
   <string name="save_menu">Save</string>
 
   // aadhar related strings
-  <string name="uid">UID Number</string>
-  <string name="id_type">ID Type</string>
-  <string name="location">Location</string>
-  <string name="name">Name</string>
+  <string name="uid">UID Number *</string>
+  <string name="id_type">ID Type *</string>
+  <string name="location">Location *</string>
+  <string name="name">Name *</string>
   <string name="date_of_birth">Date of Birth</string>
   <string name="year_of_birth">Year of Birth</string>
-  <string name="gender">Gender</string>
-  <string name="address">Complete Address</string>
-  <string name="phone_number">Phone Number</string>
-  <string name="age">Age</string>
+  <string name="gender">Gender *</string>
+  <string name="address">Complete Address *</string>
+  <string name="phone_number">Phone Number *</string>
+  <string name="age">Age *</string>
   <string name="hint_uid">000000000000</string>
-  <string name="hint_dob">YYYY-MM-DD</string>
+  <string name="hint_dob">DD-MM-YYYY</string>
   <string name="hint_yob">YYYY</string>
   <string name="hint_generic">XX</string>
   <string name="hint_phone_number">0000000000</string>
@@ -26,6 +26,11 @@
   <string name="username">Username</string>
   <string name="prompt_password">Password</string>
   <string name="action_sign_in">Sign In</string>
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
+
+  <string name="aadhar_card">Aadhar Card</string>
+  <string name="passport">Passport</string>
+  <string name="voter_id">Voter Id</string>
+  <string name="pan_card">Pan Card</string>
+  <string name="dl">Driving Licence</string>
+  <string name="other">Other</string>
 </resources>

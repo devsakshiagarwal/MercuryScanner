@@ -13,7 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import com.goyals.mercuryscannerapp.R
-import com.goyals.mercuryscannerapp.arch.Result
+import com.goyals.mercuryscannerapp.arch.Result.Status
 import com.goyals.mercuryscannerapp.model.SharedPref
 import com.goyals.mercuryscannerapp.model.schema.AadharRequest
 import com.goyals.mercuryscannerapp.utils.AppUtils
@@ -25,6 +25,7 @@ import java.util.Calendar
 @AndroidEntryPoint
 class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
   private val editFormViewModel: EditFormViewModel by viewModels()
+  private var aadharInfoFromBundle = AadharRequest()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -48,9 +49,15 @@ class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    if (item.itemId == android.R.id.home) {
-      onBackPressed()
-      return true
+    when (item.itemId) {
+      android.R.id.home -> {
+        onBackPressed()
+        return true
+      }
+      R.id.item_save -> {
+        updateData()
+        return true
+      }
     }
     return false
   }
@@ -86,15 +93,17 @@ class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
 
   private fun handleBundle() {
     if (intent.getParcelableExtra<AadharRequest>("aadhar_info") != null) {
-      val aadharInfo = intent.getParcelableExtra<AadharRequest>("aadhar_info")!!
-      et_id_type.setText("Aadhar Card")
-      et_uid.setText(aadharInfo.uid)
-      et_name.setText(aadharInfo.name)
-      et_dob.setText(aadharInfo.dob)
-      et_yob.setText(aadharInfo.yob)
-      et_address.setText(aadharInfo.address)
-      et_age.setText(aadharInfo.age)
-      et_gender.setText(aadharInfo.gender)
+      aadharInfoFromBundle = intent.getParcelableExtra("aadhar_info")!!
+      et_uid.setText(aadharInfoFromBundle.proofNumber)
+      et_name.setText(aadharInfoFromBundle.name)
+      if (aadharInfoFromBundle.dob.toLong() > 0) {
+        et_dob.setText(
+          AppUtils.getDateFromMillis(aadharInfoFromBundle.dob.toLong()))
+      }
+      et_yob.setText(aadharInfoFromBundle.yearOfBirth)
+      et_address.setText(aadharInfoFromBundle.address)
+      et_age.setText(aadharInfoFromBundle.age.toString())
+      et_gender.setText(aadharInfoFromBundle.genderToShow)
     }
   }
 
@@ -111,32 +120,48 @@ class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
 
   private fun updateData() {
     if (isIdValid() && isNameValid() && isAddressValid() && isAgeValid() && isGenderValid() && isPhoneValid()) {
-      editFormViewModel.createUser(AadharRequest())
+      val aadharRequest =
+        AadharRequest(et_address.text.toString(), 0, "pending",
+          aadharInfoFromBundle.district,
+          AppUtils.getTimeStampInMillis(et_dob.text.toString())
+            .toString(), et_gender.text.toString(), et_location.text.toString(),
+          aadharInfoFromBundle.martial, et_name.text.toString(),
+          et_phone.text.toString(), aadharInfoFromBundle.pincode,
+          et_uid.text.toString(), et_id_type.text.toString(),
+          aadharInfoFromBundle.state, SharedPref(this).getUserId(),
+          et_yob.text.toString())
+      editFormViewModel.createUser(aadharRequest)
         .observe(this, Observer {
           when (it.status) {
-            Result.Status.SUCCESS -> {
+            Status.SUCCESS -> {
+              val aadharInfo = it.data!!
               progress_bar.visibility = View.GONE
-              Toast.makeText(this, "Entry Updated", Toast.LENGTH_SHORT)
-                .show()
+              showID("Entry updated. your id is: ${aadharInfo.userId}")
               finish()
             }
-            Result.Status.ERROR -> {
+            Status.ERROR -> {
               progress_bar.visibility = View.GONE
               showError(it.message!!)
             }
-            Result.Status.LOADING -> progress_bar.visibility = View.VISIBLE
+            Status.LOADING -> progress_bar.visibility = View.VISIBLE
           }
         })
     }
   }
 
   private fun isIdValid(): Boolean {
-    return if (et_uid.text.toString().length >= 7) {
-      tv_err_uid.visibility = View.GONE
-      true
-    } else {
+    return if (et_id_type.text.toString() == getString(R.string.aadhar_card) && et_uid.text.toString().length != 12) {
       tv_err_uid.visibility = View.VISIBLE
       false
+    } else if (et_id_type.text.toString() == getString(R.string.pan_card) && et_uid.text.toString().length != 10) {
+      tv_err_uid.visibility = View.VISIBLE
+      false
+    } else if (et_uid.text.toString().length < 6) {
+      tv_err_uid.visibility = View.VISIBLE
+      false
+    } else {
+      tv_err_uid.visibility = View.GONE
+      true
     }
   }
 
@@ -197,6 +222,16 @@ class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
   private fun showError(message: String) {
     val builder = AlertDialog.Builder(this)
     builder.setTitle("Alert")
+      .setMessage(message)
+    builder.setPositiveButton("Ok") { dialog, _ ->
+      dialog.dismiss()
+    }
+    builder.show()
+  }
+
+  private fun showID(message: String) {
+    val builder = AlertDialog.Builder(this)
+    builder.setTitle("Note your ID")
       .setMessage(message)
     builder.setPositiveButton("Ok") { dialog, _ ->
       dialog.dismiss()
