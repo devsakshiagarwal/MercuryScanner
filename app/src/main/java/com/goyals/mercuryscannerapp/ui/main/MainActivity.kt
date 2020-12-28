@@ -20,6 +20,7 @@ import com.goyals.mercuryscannerapp.ui.scanner.AadharScanActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.app_bar_main.fab
 import kotlinx.android.synthetic.main.app_bar_main.fab_other_id
+import kotlinx.android.synthetic.main.app_bar_main.fab_results
 import kotlinx.android.synthetic.main.app_bar_main.fab_scan_id
 import kotlinx.android.synthetic.main.app_bar_main.rl_fabs
 import kotlinx.android.synthetic.main.app_bar_main.rv_main
@@ -48,7 +49,11 @@ class MainActivity : AppCompatActivity() {
 
   private fun handleFabs() {
     fab.setOnClickListener {
-      rl_fabs.visibility = View.VISIBLE
+      if (rl_fabs.visibility == View.VISIBLE) {
+        rl_fabs.visibility = View.GONE
+      } else {
+        rl_fabs.visibility = View.VISIBLE
+      }
     }
     fab_scan_id.setOnClickListener {
       rl_fabs.visibility = View.GONE
@@ -58,6 +63,9 @@ class MainActivity : AppCompatActivity() {
       rl_fabs.visibility = View.GONE
       startActivity(Intent(this, EditFormActivity::class.java))
     }
+    fab_results.setOnClickListener {
+      rl_fabs.visibility = View.GONE
+    }
   }
 
   private fun getCustomers() {
@@ -66,10 +74,11 @@ class MainActivity : AppCompatActivity() {
         when (it.status) {
           SUCCESS -> {
             progress_bar.visibility = View.GONE
-            val response : AadharResponse = it.data!!
+            val response: AadharResponse = it.data!!
             val aadharAdapter = AadharAdapter()
-            Log.d("main_act", "list length: ${response.customerList
-              .aadharList.size}")
+            Log.d("main_act", "list length: ${
+              response.customerList.aadharList.size
+            }")
             aadharAdapter.setAddress(response.customerList.aadharList)
             rv_main.apply {
               layoutManager = LinearLayoutManager(this@MainActivity)

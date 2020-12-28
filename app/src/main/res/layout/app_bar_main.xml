@@ -53,6 +53,7 @@
       android:paddingStart="0dp"
       android:paddingEnd="4dp"
       android:visibility="gone"
+      android:background="@color/colorFF"
       app:layout_constraintBottom_toTopOf="@id/fab"
       app:layout_constraintEnd_toEndOf="parent"
       >
@@ -65,12 +66,43 @@
         >
 
       <androidx.appcompat.widget.AppCompatTextView
-          style="@style/text_13_00_light"
+          style="@style/text_15_5c_bold"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center_vertical"
           android:layout_marginEnd="@dimen/dp_16"
           android:gravity="center_vertical"
+          android:background="@color/colorFF"
+          android:text="Input Covid Results"
+          />
+
+      <com.google.android.material.floatingactionbutton.FloatingActionButton
+          android:id="@+id/fab_results"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          app:fabSize="mini"
+          app:srcCompat="@drawable/ic_touch"
+          tools:ignore="ContentDescription"
+          />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/dp_16"
+        android:orientation="horizontal"
+        >
+
+      <androidx.appcompat.widget.AppCompatTextView
+          style="@style/text_15_5c_bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:layout_marginEnd="@dimen/dp_16"
+          android:gravity="center_vertical"
+          android:background="@color/colorFF"
           android:text="Input Other Ids"
           />
 
@@ -90,16 +122,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_16"
+        android:layout_gravity="end"
+
         android:orientation="horizontal"
         >
 
       <androidx.appcompat.widget.AppCompatTextView
-          style="@style/text_13_00_light"
+          style="@style/text_15_5c_bold"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center_vertical"
           android:layout_marginEnd="@dimen/dp_16"
           android:gravity="center_vertical"
+          android:background="@color/colorFF"
           android:text="Scan Aadhar Card"
           />
 

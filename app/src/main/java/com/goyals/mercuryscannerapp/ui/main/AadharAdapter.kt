@@ -32,8 +32,11 @@ class AadharAdapter() : RecyclerView.Adapter<AadharViewHolder>() {
     parent: ViewGroup) : RecyclerView.ViewHolder(
     inflater.inflate(R.layout.item_aadhar, parent, false)) {
     private var tvName: AppCompatTextView = itemView.findViewById(R.id.tv_name)
-    private var tvAge: AppCompatTextView = itemView.findViewById(R.id.tv_age)
+    private var tvUserId: AppCompatTextView =
+      itemView.findViewById(R.id.tv_user_id)
     private var tvId: AppCompatTextView = itemView.findViewById(R.id.tv_id)
+    private var tvIdType: AppCompatTextView = itemView.findViewById(R.id
+      .tv_id_type)
     private var tvAddress: AppCompatTextView =
       itemView.findViewById(R.id.tv_address)
     private var tvPhone: AppCompatTextView =
@@ -45,12 +48,13 @@ class AadharAdapter() : RecyclerView.Adapter<AadharViewHolder>() {
 
     fun bind(aadharInfo: AadharInfo) {
       tvName.text = aadharInfo.name
-      //tvAge.text = AppUtils.getAge(aadharInfo.dob.toLong())
+      tvUserId.text = "Customer ID : ${aadharInfo.userId}"
       tvId.text = aadharInfo.proofNumber
       tvAddress.text = aadharInfo.address
-      tvPhone.text = aadharInfo.phone
+      tvPhone.text = "Phone : ${aadharInfo.phone}"
       tvGender.text = aadharInfo.gender
-      tvResult.text = aadharInfo.covidResultToShow
+      tvIdType.text = "${aadharInfo.proofType} :"
+      tvResult.text = "Test Result: ${aadharInfo.covidResultToShow}"
     }
   }
 }

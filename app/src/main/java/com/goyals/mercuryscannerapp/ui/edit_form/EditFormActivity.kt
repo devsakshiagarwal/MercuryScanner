@@ -134,10 +134,9 @@ class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
         .observe(this, Observer {
           when (it.status) {
             Status.SUCCESS -> {
-              val aadharInfo = it.data!!
+              val createResponse = it.data!!
               progress_bar.visibility = View.GONE
-              showID("Entry updated. your id is: ${aadharInfo.userId}")
-              finish()
+              showID("Entry updated. your id is: ${createResponse.responseData.customerID}")
             }
             Status.ERROR -> {
               progress_bar.visibility = View.GONE
@@ -235,6 +234,7 @@ class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
       .setMessage(message)
     builder.setPositiveButton("Ok") { dialog, _ ->
       dialog.dismiss()
+      finish()
     }
     builder.show()
   }

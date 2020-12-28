@@ -18,7 +18,7 @@
       />
 
   <androidx.appcompat.widget.AppCompatTextView
-      android:id="@+id/tv_id"
+      android:id="@+id/tv_id_type"
       style="@style/text_13_00_bold"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -29,11 +29,23 @@
       />
 
   <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_id"
+      style="@style/text_13_00_bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dp_16"
+      android:layout_marginTop="@dimen/dp_8"
+      app:layout_constraintStart_toEndOf="@id/tv_id_type"
+      app:layout_constraintTop_toBottomOf="@id/tv_name"
+      />
+
+
+  <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_address"
       style="@style/text_13_00_light"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginHorizontal="@dimen/dp_16"
+      android:paddingHorizontal="@dimen/dp_16"
       android:layout_marginTop="4dp"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/tv_id"
@@ -56,14 +68,14 @@
       style="@style/text_13_00_light"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="48dp"
+      android:layout_marginStart="32dp"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@id/tv_phone"
       app:layout_constraintTop_toTopOf="@id/tv_phone"
       />
 
   <androidx.appcompat.widget.AppCompatTextView
-      android:id="@+id/tv_age"
+      android:id="@+id/tv_user_id"
       style="@style/text_13_00_light"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -75,16 +87,15 @@
 
   <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_result"
-      style="@style/text_13_00_bold"
+      style="@style/text_13_00_light"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginHorizontal="@dimen/dp_16"
-      android:layout_marginTop="8dp"
       android:paddingEnd="@dimen/dp_16"
       android:textAllCaps="true"
-      app:layout_constraintBottom_toBottomOf="@id/tv_age"
+      app:layout_constraintBottom_toBottomOf="@id/tv_user_id"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="@id/tv_age"
+      app:layout_constraintTop_toTopOf="@id/tv_user_id"
       />
 
   <View
@@ -93,6 +104,6 @@
       android:layout_marginHorizontal="@dimen/dp_16"
       android:layout_marginTop="12dp"
       android:background="@color/color_c1"
-      app:layout_constraintTop_toBottomOf="@id/tv_age"
+      app:layout_constraintTop_toBottomOf="@id/tv_user_id"
       />
 </androidx.constraintlayout.widget.ConstraintLayout>
