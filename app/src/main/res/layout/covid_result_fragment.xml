@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.covid_result.CovidResultActivity"
+    >
+
+  <androidx.appcompat.widget.SearchView
+      android:id="@+id/search_view"
+      style="@style/et_14_5c_semi_bold"
+      android:layout_width="match_parent"
+      android:layout_height="36dp"
+      android:layout_margin="12dp"
+      android:background="@drawable/bg_et_00"
+      app:iconifiedByDefault="false"
+      app:layout_constraintTop_toTopOf="parent"
+      app:queryHint="Search for name, phone or proof id"
+      />
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_search"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dp_8"
+      app:layout_constraintTop_toBottomOf="@id/search_view"
+      />
+
+  <include
+      android:id="@+id/layout_search"
+      layout="@layout/item_aadhar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dp_16"
+      android:layout_marginTop="@dimen/dp_8"
+      android:visibility="gone"
+      app:layout_constraintTop_toBottomOf="@id/rv_search"
+      />
+
+  <RadioGroup
+      android:id="@+id/rg_result"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="@dimen/dp_16"
+      android:layout_marginTop="@dimen/dp_8"
+      android:visibility="gone"
+      app:layout_constraintTop_toBottomOf="@id/layout_search"
+      >
+
+    <RadioButton
+        android:id="@+id/rb_positive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:layoutDirection="rtl"
+        android:text="Positive"
+
+        />
+
+    <RadioButton
+        android:id="@+id/rb_negative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layoutDirection="rtl"
+        android:text="Negative"
+        />
+  </RadioGroup>
+
+  <include layout="@layout/layout_progress"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

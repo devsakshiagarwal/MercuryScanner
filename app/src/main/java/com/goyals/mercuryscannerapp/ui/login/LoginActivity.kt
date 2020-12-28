@@ -12,7 +12,7 @@ import com.goyals.mercuryscannerapp.ui.main.MainActivity
 import com.goyals.mercuryscannerapp.R
 import com.goyals.mercuryscannerapp.arch.Result
 import com.goyals.mercuryscannerapp.model.SharedPref
-import com.goyals.mercuryscannerapp.model.schema.Login
+import com.goyals.mercuryscannerapp.model.schema.LoginData
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.layout_progress.progress_bar
@@ -43,7 +43,8 @@ class LoginActivity : AppCompatActivity() {
             when (it.status) {
               Result.Status.SUCCESS -> {
                 progress_bar.visibility = View.GONE
-                proceedWithLogin(it.data!!)
+                val login = it.data!!
+                proceedWithLogin(login.responseData)
               }
               Result.Status.ERROR -> {
                 progress_bar.visibility = View.GONE
@@ -58,13 +59,14 @@ class LoginActivity : AppCompatActivity() {
     }
   }
 
-  private fun proceedWithLogin(login: Login) {
+  private fun proceedWithLogin(login: LoginData) {
     Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT)
       .show()
     val sharedPref = SharedPref(this)
     sharedPref.setLoggedIn(true)
     sharedPref.setUserId(login.userId)
     sharedPref.setUserName(login.userName)
+    sharedPref.setUserType(login.userType)
     startActivity(Intent(this, MainActivity::class.java))
     finish()
   }

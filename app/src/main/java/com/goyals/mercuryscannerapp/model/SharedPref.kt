@@ -9,6 +9,7 @@ class SharedPref(context: Context) {
     private const val IS_LOGGED_IN = "is_logged_in"
     private const val USER_ID = "user_id"
     private const val USER_NAME = "user_name"
+    private const val USER_TYPE = "user_type"
     private const val USER_LOCATION = "user_location"
   }
 
@@ -38,6 +39,15 @@ class SharedPref(context: Context) {
   fun setUserName(name: String) {
     val editor = sharedPref.edit()
     editor.putString(USER_NAME, name)
+    editor.apply()
+    editor.commit()
+  }
+
+  fun getUserType(): String? = sharedPref.getString(USER_TYPE, "")
+
+  fun setUserType(name: String) {
+    val editor = sharedPref.edit()
+    editor.putString(USER_TYPE, name)
     editor.apply()
     editor.commit()
   }
