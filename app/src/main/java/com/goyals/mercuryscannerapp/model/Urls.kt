@@ -5,6 +5,7 @@ object Urls {
   private const val CUSTOMER = "customer/"
   const val CUSTOMER_LIST = "${CUSTOMER}listing"
   const val CUSTOMER_ACTION = "${CUSTOMER}create"
+  const val CUSTOMER_UPDATE = "${CUSTOMER}update/{user_id}"
   private const val USER = "user/"
   const val LOGIN = "${USER}validate"
 }

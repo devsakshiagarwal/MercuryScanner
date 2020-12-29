@@ -20,23 +20,124 @@
       app:queryHint="Search for name, phone or proof id"
       />
 
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/cl_search"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/colorFF"
+      android:paddingVertical="@dimen/dp_16"
+      android:visibility="gone"
+      app:layout_constraintTop_toBottomOf="@id/search_view"
+      >
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_name"
+        style="@style/text_13_00_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_id_type"
+        style="@style/text_13_00_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_id"
+        style="@style/text_13_00_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+        app:layout_constraintStart_toEndOf="@id/tv_id_type"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_address"
+        style="@style/text_13_00_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingHorizontal="@dimen/dp_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_id"
+        app:layout_goneMarginTop="@dimen/dp_8"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_phone"
+        style="@style/text_13_00_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_address"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_gender"
+        style="@style/text_13_00_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_phone"
+        app:layout_constraintTop_toTopOf="@id/tv_phone"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_user_id"
+        style="@style/text_13_00_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_gender"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_result"
+        style="@style/text_13_00_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16"
+        android:paddingStart="0dp"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="@id/tv_user_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_user_id"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="#707070"
+        app:layout_constraintTop_toBottomOf="@id/tv_result"
+        />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/rv_search"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/dp_8"
-      app:layout_constraintTop_toBottomOf="@id/search_view"
-      />
-
-  <include
-      android:id="@+id/layout_search"
-      layout="@layout/item_aadhar"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginHorizontal="@dimen/dp_16"
-      android:layout_marginTop="@dimen/dp_8"
-      android:visibility="gone"
-      app:layout_constraintTop_toBottomOf="@id/rv_search"
+      android:layout_marginTop="12dp"
+      app:layout_constraintTop_toBottomOf="@id/cl_search"
       />
 
   <RadioGroup
@@ -44,9 +145,9 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginHorizontal="@dimen/dp_16"
-      android:layout_marginTop="@dimen/dp_8"
+      android:layout_marginTop="12dp"
       android:visibility="gone"
-      app:layout_constraintTop_toBottomOf="@id/layout_search"
+      app:layout_constraintTop_toBottomOf="@id/cl_search"
       >
 
     <RadioButton
@@ -55,7 +156,7 @@
         android:layout_height="wrap_content"
         android:checked="true"
         android:layoutDirection="rtl"
-        android:text="Positive"
+        android:text="Mark Positive"
 
         />
 
@@ -65,10 +166,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_8"
         android:layoutDirection="rtl"
-        android:text="Negative"
+        android:text="Mark Negative"
         />
   </RadioGroup>
 
-  <include layout="@layout/layout_progress"/>
+  <include layout="@layout/layout_progress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

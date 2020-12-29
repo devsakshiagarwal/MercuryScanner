@@ -49,8 +49,11 @@
 
     <activity
         android:name=".ui.covid_result.CovidResultActivity"
-        android:label="@string/update_result"
-        android:theme="@style/Theme.MercuryScannerApp.NoActionBar" />
+        android:label="@string/update_result">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".ui.main.MainActivity" />
+    </activity>
 
   </application>
 

@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
           SUCCESS -> {
             progress_bar.visibility = View.GONE
             val response: AadharResponse = it.data!!
-            val aadharAdapter = AadharAdapter()
+            val aadharAdapter = AadharAdapter(null)
             aadharAdapter.setAddress(response.customerList.aadharList)
             rv_main.apply {
               layoutManager = LinearLayoutManager(this@MainActivity)

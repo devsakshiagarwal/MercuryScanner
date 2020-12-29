@@ -8,7 +8,8 @@ import com.goyals.mercuryscannerapp.R
 import com.goyals.mercuryscannerapp.model.schema.AadharInfo
 import com.goyals.mercuryscannerapp.ui.main.AadharAdapter.AadharViewHolder
 
-class AadharAdapter() : RecyclerView.Adapter<AadharViewHolder>() {
+class AadharAdapter(private val aadharAdapterInterface: AadharAdapterInterface?) :
+  RecyclerView.Adapter<AadharViewHolder>() {
   private lateinit var aadharInfo: List<AadharInfo>
 
   fun setAddress(aadharInfo: List<AadharInfo>) {
@@ -23,7 +24,7 @@ class AadharAdapter() : RecyclerView.Adapter<AadharViewHolder>() {
 
   override fun onBindViewHolder(holder: AadharViewHolder,
     position: Int) {
-    holder.bind(aadharInfo[position])
+    holder.bind(aadharInfo[position], aadharAdapterInterface)
   }
 
   override fun getItemCount(): Int = aadharInfo.size
@@ -35,8 +36,8 @@ class AadharAdapter() : RecyclerView.Adapter<AadharViewHolder>() {
     private var tvUserId: AppCompatTextView =
       itemView.findViewById(R.id.tv_user_id)
     private var tvId: AppCompatTextView = itemView.findViewById(R.id.tv_id)
-    private var tvIdType: AppCompatTextView = itemView.findViewById(R.id
-      .tv_id_type)
+    private var tvIdType: AppCompatTextView =
+      itemView.findViewById(R.id.tv_id_type)
     private var tvAddress: AppCompatTextView =
       itemView.findViewById(R.id.tv_address)
     private var tvPhone: AppCompatTextView =
@@ -46,7 +47,7 @@ class AadharAdapter() : RecyclerView.Adapter<AadharViewHolder>() {
     private var tvResult: AppCompatTextView =
       itemView.findViewById(R.id.tv_result)
 
-    fun bind(aadharInfo: AadharInfo) {
+    fun bind(aadharInfo: AadharInfo, aadharAdapterInterface: AadharAdapterInterface?) {
       tvName.text = aadharInfo.name
       tvUserId.text = "Customer ID : ${aadharInfo.userId}"
       tvId.text = aadharInfo.proofNumber
@@ -55,6 +56,13 @@ class AadharAdapter() : RecyclerView.Adapter<AadharViewHolder>() {
       tvGender.text = aadharInfo.gender
       tvIdType.text = "${aadharInfo.proofType} :"
       tvResult.text = "Test Result: ${aadharInfo.covidResultToShow}"
+      itemView.setOnClickListener {
+        aadharAdapterInterface?.onClick(aadharInfo)
+      }
     }
+  }
+
+  interface AadharAdapterInterface {
+    fun onClick(aadharInfo: AadharInfo)
   }
 }
