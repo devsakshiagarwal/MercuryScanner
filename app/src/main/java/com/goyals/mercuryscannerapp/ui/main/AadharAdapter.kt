@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.goyals.mercuryscannerapp.R
 import com.goyals.mercuryscannerapp.model.schema.AadharInfo
 import com.goyals.mercuryscannerapp.ui.main.AadharAdapter.AadharViewHolder
+import com.goyals.mercuryscannerapp.utils.AppUtils
 
 class AadharAdapter(private val aadharAdapterInterface: AadharAdapterInterface?) :
   RecyclerView.Adapter<AadharViewHolder>() {
@@ -47,14 +48,28 @@ class AadharAdapter(private val aadharAdapterInterface: AadharAdapterInterface?)
     private var tvResult: AppCompatTextView =
       itemView.findViewById(R.id.tv_result)
 
-    fun bind(aadharInfo: AadharInfo, aadharAdapterInterface: AadharAdapterInterface?) {
+    fun bind(aadharInfo: AadharInfo,
+      aadharAdapterInterface: AadharAdapterInterface?) {
       tvName.text = aadharInfo.name
       tvUserId.text = "Customer ID : ${aadharInfo.userId}"
       tvId.text = aadharInfo.proofNumber
       tvAddress.text = aadharInfo.address
       tvPhone.text = "Phone : ${aadharInfo.phone}"
-      tvGender.text = aadharInfo.gender
+      val age: Int =
+        if (aadharInfo.yearOfBirth != null && aadharInfo.yearOfBirth.isNotEmpty()) {
+          AppUtils.getAge(aadharInfo.yearOfBirth.toInt())
+        } else {
+          0
+        }
+      tvGender.text = "${aadharInfo.gender}, $age years"
       tvIdType.text = "${aadharInfo.proofType} :"
+      if (aadharInfo.covidResult == 1) {
+        tvResult.setTextColor(
+          tvResult.context.resources.getColor(R.color.colorError))
+      } else {
+        tvResult.setTextColor(
+          tvResult.context.resources.getColor(R.color.color00))
+      }
       tvResult.text = "Test Result: ${aadharInfo.covidResultToShow}"
       itemView.setOnClickListener {
         aadharAdapterInterface?.onClick(aadharInfo)

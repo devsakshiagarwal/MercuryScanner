@@ -154,9 +154,11 @@ class CovidResultActivity : AppCompatActivity(),
   private fun updateData() {
     if (selectedAadharInfo.userId.toString()
         .isNotEmpty()) {
-      var updateCustomerSchema = UpdateCustomerSchema()
+      var updateCustomerSchema =
+        UpdateCustomerSchema(1, SharedPref(this).getUserId(),"updated")
       if (rb_negative.isChecked) {
-        updateCustomerSchema = UpdateCustomerSchema(0)
+        updateCustomerSchema =
+          UpdateCustomerSchema(0, SharedPref(this).getUserId(), "updated")
       }
       mainViewModel.updateCustomer(updateCustomerSchema,
         selectedAadharInfo.userId)

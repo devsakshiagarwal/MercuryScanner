@@ -7,7 +7,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.DatePicker
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
@@ -96,9 +95,8 @@ class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
       aadharInfoFromBundle = intent.getParcelableExtra("aadhar_info")!!
       et_uid.setText(aadharInfoFromBundle.proofNumber)
       et_name.setText(aadharInfoFromBundle.name)
-      if (aadharInfoFromBundle.dob.toLong() > 0) {
-        et_dob.setText(
-          AppUtils.getDateFromMillis(aadharInfoFromBundle.dob.toLong()))
+      if (aadharInfoFromBundle.dob.isNotEmpty()) {
+        et_dob.setText(aadharInfoFromBundle.dob)
       }
       et_yob.setText(aadharInfoFromBundle.yearOfBirth)
       et_address.setText(aadharInfoFromBundle.address)
@@ -111,6 +109,7 @@ class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
     val calender = Calendar.getInstance()
     val datePickerDialog = DatePickerDialog(this,
       { _: DatePicker?, selectedYear: Int, monthOfYear: Int, dayOfMonth: Int ->
+        et_yob.setText(selectedYear.toString())
         et_dob.setText(
           AppUtils.getFormattedDob(dayOfMonth, monthOfYear + 1, selectedYear))
       }, calender[Calendar.YEAR], calender[Calendar.MONTH],
@@ -122,21 +121,25 @@ class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
     if (isIdValid() && isNameValid() && isAddressValid() && isAgeValid() && isGenderValid() && isPhoneValid()) {
       val aadharRequest =
         AadharRequest(et_address.text.toString(), 0, "pending",
-          aadharInfoFromBundle.district,
-          AppUtils.getTimeStampInMillis(et_dob.text.toString())
-            .toString(), et_gender.text.toString(), et_location.text.toString(),
-          aadharInfoFromBundle.martial, et_name.text.toString(),
-          et_phone.text.toString(), aadharInfoFromBundle.pincode,
-          et_uid.text.toString(), et_id_type.text.toString(),
-          aadharInfoFromBundle.state, SharedPref(this).getUserId(),
-          et_yob.text.toString())
+          aadharInfoFromBundle.district, et_dob.text.toString(),
+          if (et_gender.text.toString() == getString(R.string.other)) {
+            "Transgender"
+          } else {
+            et_gender.text.toString()
+          }, et_location.text.toString(), aadharInfoFromBundle.martial,
+          et_name.text.toString(), et_phone.text.toString(),
+          aadharInfoFromBundle.pincode, et_uid.text.toString(),
+          et_id_type.text.toString(), aadharInfoFromBundle.state,
+          SharedPref(this).getUserId(), et_yob.text.toString(),
+          SharedPref(this).getUserId())
       editFormViewModel.createUser(aadharRequest)
         .observe(this, Observer {
           when (it.status) {
             Status.SUCCESS -> {
               val createResponse = it.data!!
               progress_bar.visibility = View.GONE
-              showID("Entry updated. your id is: ${createResponse.responseData.customerID}")
+              showID(
+                "Entry updated. your id is: ${createResponse.responseData.customerID}")
             }
             Status.ERROR -> {
               progress_bar.visibility = View.GONE

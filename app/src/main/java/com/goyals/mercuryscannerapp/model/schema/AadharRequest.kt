@@ -23,14 +23,11 @@ data class AadharRequest(@Json(name = "address") val address: String = "",
   @Json(name = "proof_type") val proofType: String = "",
   @Json(name = "state") val state: String = "",
   @Json(name = "user_id") val userId: Int = 0,
-  @Json(name = "year_of_birth") val yearOfBirth: String = "") : Parcelable {
+  @Json(name = "year_of_birth") val yearOfBirth: String = "",
+  @Json(name = "updated_by") val updatedBy: Int = 0) : Parcelable {
   val age: Int = when {
-    dob.isNotEmpty() && dob.toLong() > 0 -> {
-      AppUtils.getAge(dob.toLong())
-    }
     yearOfBirth.isNotEmpty() -> {
-      AppUtils.getAge(AppUtils.getTimeStampInMillis(
-        AppUtils.getFormattedDob(1, 1, yearOfBirth.toInt())))
+      AppUtils.getAge(yearOfBirth.toInt())
     }
     else -> {
       0
