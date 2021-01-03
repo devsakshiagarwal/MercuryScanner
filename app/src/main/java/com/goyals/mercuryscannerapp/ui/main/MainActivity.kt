@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
 
   private fun getCustomers() {
     mainViewModel.getCustomers(
-      ListRequest(0, 0, "", SharedPref(this).getUserId(),
+      ListRequest(30, 0, "", SharedPref(this).getUserId(),
         SharedPref(this).getUserType()!!))
       .observe(this, Observer {
         when (it.status) {

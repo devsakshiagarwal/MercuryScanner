@@ -47,6 +47,8 @@ class AadharAdapter(private val aadharAdapterInterface: AadharAdapterInterface?)
       itemView.findViewById(R.id.tv_gender)
     private var tvResult: AppCompatTextView =
       itemView.findViewById(R.id.tv_result)
+    private var tvDate: AppCompatTextView =
+      itemView.findViewById(R.id.tv_date)
 
     fun bind(aadharInfo: AadharInfo,
       aadharAdapterInterface: AadharAdapterInterface?) {
@@ -71,6 +73,7 @@ class AadharAdapter(private val aadharAdapterInterface: AadharAdapterInterface?)
           tvResult.context.resources.getColor(R.color.color00))
       }
       tvResult.text = "Test Result: ${aadharInfo.covidResultToShow}"
+      tvDate.text = "Added on: ${aadharInfo.createdDateToShow}"
       itemView.setOnClickListener {
         aadharAdapterInterface?.onClick(aadharInfo)
       }

@@ -18,6 +18,16 @@
       />
 
   <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/tv_date"
+      style="@style/text_13_00_light"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="32dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@id/tv_name"
+      />
+
+  <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/tv_id_type"
       style="@style/text_13_00_bold"
       android:layout_width="wrap_content"

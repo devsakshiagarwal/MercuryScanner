@@ -118,7 +118,7 @@ class CovidResultActivity : AppCompatActivity(),
 
   private fun getCustomers(query: String) {
     mainViewModel.getCustomers(
-      ListRequest(0, 0, query, SharedPref(this).getUserId(),
+      ListRequest(30, 0, query, SharedPref(this).getUserId(),
         SharedPref(this).getUserType()!!))
       .observe(this, Observer {
         when (it.status) {

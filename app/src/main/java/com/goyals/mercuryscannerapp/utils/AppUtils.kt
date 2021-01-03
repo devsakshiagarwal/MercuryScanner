@@ -1,7 +1,10 @@
 package com.goyals.mercuryscannerapp.utils
 
 import com.goyals.mercuryscannerapp.model.schema.AadharRequest
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 
 object AppUtils {
   fun convertScanDataToAadharData(rawString: String): AadharRequest {
@@ -53,5 +56,21 @@ object AppUtils {
     month: Int,
     year: Int): String {
     return "$date-$month-$year"
+  }
+
+  fun changeDateFormat(time: String): String {
+    val inputPattern = "yyyy-MM-dd"
+    val outputPattern = "dd-MMM-yyyy"
+    val inputFormat = SimpleDateFormat(inputPattern)
+    val outputFormat = SimpleDateFormat(outputPattern)
+    val date: Date
+    var str = ""
+    try {
+      date = inputFormat.parse(time)
+      str = outputFormat.format(date)
+    } catch (e: ParseException) {
+      e.printStackTrace()
+    }
+    return str
   }
 }
