@@ -3,6 +3,7 @@
   <string name="update_result">Update Covid Result</string>
   <string name="edit_form">User Details</string>
   <string name="save_menu">Save</string>
+  <string name="csv_menu">CSV</string>
 
   // aadhar related strings
   <string name="uid">UID Number *</string>

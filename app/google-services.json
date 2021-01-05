@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "571921004750",
+    "project_id": "mercury-scanner",
+    "storage_bucket": "mercury-scanner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571921004750:android:a7fb25d5ce9b9c82faf89f",
+        "android_client_info": {
+          "package_name": "com.goyals.mercuryscannerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571921004750-em7h9bgfti2ucr9pq4mtr6e01jaoggka.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.goyals.mercuryscannerapp",
+            "certificate_hash": "742f9443031f476328987202ff04971062b144a5"
+          }
+        },
+        {
+          "client_id": "571921004750-v1khuhcga0bo2328e2hfpg4uf8flbpe8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLpt9eMgfRkgEuMcO8pHlcVHbiPqn2bIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571921004750-v1khuhcga0bo2328e2hfpg4uf8flbpe8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

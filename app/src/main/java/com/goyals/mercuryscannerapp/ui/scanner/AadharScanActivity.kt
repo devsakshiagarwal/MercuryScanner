@@ -19,6 +19,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScanning
@@ -179,6 +180,7 @@ class AadharScanActivity : AppCompatActivity() {
 
   private fun checkForBarCodeValidations(barcodes: List<Barcode>) {
     if (barcodes.isNotEmpty() && barcodes[0].rawValue!!.length > 100) {
+      FirebaseAnalytics.getInstance(this).logEvent("successful_scan", Bundle())
       val rawString = barcodes[0].rawValue!!
       Log.d(TAG, rawString)
       val editFormActivityIntent =

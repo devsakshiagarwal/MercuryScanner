@@ -4,6 +4,8 @@ plugins {
   id 'kotlin-android-extensions'
   id 'kotlin-kapt'
   id 'dagger.hilt.android.plugin'
+  id 'com.google.gms.google-services'
+  id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -22,6 +24,11 @@ android {
 
   buildTypes {
     release {
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+          'proguard-rules.pro'
+    }
+    debug {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
           'proguard-rules.pro'
@@ -80,6 +87,11 @@ dependencies {
   implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+
+  //firebase
+  implementation platform('com.google.firebase:firebase-bom:26.2.0')
+  implementation 'com.google.firebase:firebase-analytics-ktx'
+  implementation 'com.google.firebase:firebase-crashlytics-ktx'
 
   //testing
   testImplementation "junit:junit:$junit_version"
