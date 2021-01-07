@@ -2,17 +2,12 @@ package com.goyals.mercuryscannerapp.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.goyals.mercuryscannerapp.R
 import com.goyals.mercuryscannerapp.R.layout
 import com.goyals.mercuryscannerapp.arch.Result.Status.ERROR
 import com.goyals.mercuryscannerapp.arch.Result.Status.LOADING
@@ -22,19 +17,20 @@ import com.goyals.mercuryscannerapp.model.schema.AadharResponse
 import com.goyals.mercuryscannerapp.model.schema.ListRequest
 import com.goyals.mercuryscannerapp.ui.covid_result.CovidResultActivity
 import com.goyals.mercuryscannerapp.ui.edit_form.EditFormActivity
+import com.goyals.mercuryscannerapp.ui.login.LoginActivity
 import com.goyals.mercuryscannerapp.ui.scanner.AadharScanActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.app_bar_main.fab
 import kotlinx.android.synthetic.main.app_bar_main.fab_other_id
 import kotlinx.android.synthetic.main.app_bar_main.fab_results
 import kotlinx.android.synthetic.main.app_bar_main.fab_scan_id
+import kotlinx.android.synthetic.main.app_bar_main.iv_logout
 import kotlinx.android.synthetic.main.app_bar_main.rl_fabs
 import kotlinx.android.synthetic.main.app_bar_main.rv_main
-import kotlinx.android.synthetic.main.app_bar_main.toolbar
 import kotlinx.android.synthetic.main.layout_progress.progress_bar
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
+class MainActivity : AppCompatActivity() {
   private val mainViewModel: MainViewModel by viewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,30 +39,16 @@ class MainActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
     initViews()
   }
 
-  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-    if (SharedPref(this).getUserType() == "admin") {
-      menuInflater.inflate(R.menu.menu_csv, menu)
-    }
-    return true
-  }
-
-  override fun onMenuItemClick(item: MenuItem?): Boolean {
-    when (item!!.itemId) {
-      R.id.item_csv -> {
-        return true
-      }
-    }
-    return false
-  }
-
   override fun onResume() {
     super.onResume()
     getCustomers()
   }
 
   private fun initViews() {
-    setSupportActionBar(toolbar)
     handleFabs()
+    iv_logout.setOnClickListener {
+      showErrorForLogout()
+    }
   }
 
   private fun handleFabs() {
@@ -121,6 +103,22 @@ class MainActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
     builder.setTitle("Alert")
       .setMessage(message)
     builder.setPositiveButton("Ok") { dialog, _ ->
+      dialog.dismiss()
+    }
+    builder.show()
+  }
+
+  private fun showErrorForLogout() {
+    val builder = AlertDialog.Builder(this)
+    builder.setTitle("Alert")
+      .setMessage("Are you sure you want to logout?")
+    builder.setPositiveButton("Yes") { dialog, _ ->
+      dialog.dismiss()
+      SharedPref(this).clearSharedPref()
+      startActivity(Intent(this, LoginActivity::class.java))
+      finish()
+    }
+    builder.setNegativeButton("No") { dialog, _ ->
       dialog.dismiss()
     }
     builder.show()

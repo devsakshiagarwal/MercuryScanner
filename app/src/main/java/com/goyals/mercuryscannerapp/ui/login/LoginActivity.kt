@@ -1,6 +1,8 @@
 package com.goyals.mercuryscannerapp.ui.login
 
 import android.content.Intent
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -69,6 +71,7 @@ class LoginActivity : AppCompatActivity() {
     bundle.putString(FirebaseAnalytics.Param.ITEM_ID, login.userId.toString())
     bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, login.userName)
     bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, login.userEmail)
+    bundle.putString("version", getAppVersion())
     analytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
     val sharedPref = SharedPref(this)
     sharedPref.setLoggedIn(true)
@@ -87,5 +90,15 @@ class LoginActivity : AppCompatActivity() {
       dialog.dismiss()
     }
     builder.show()
+  }
+
+  private fun getAppVersion(): String {
+    return try {
+      val pInfo: PackageInfo = packageManager.getPackageInfo(packageName, 0)
+      pInfo.versionName
+    } catch (e: PackageManager.NameNotFoundException) {
+      e.printStackTrace()
+      ""
+    }
   }
 }

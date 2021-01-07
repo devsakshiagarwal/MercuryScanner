@@ -60,4 +60,10 @@ class SharedPref(context: Context) {
     editor.apply()
     editor.commit()
   }
+
+  fun clearSharedPref() {
+    val editor = sharedPref.edit()
+    editor.clear()
+    editor.apply()
+  }
 }
