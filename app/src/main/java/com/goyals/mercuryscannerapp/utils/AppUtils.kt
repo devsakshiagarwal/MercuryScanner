@@ -1,6 +1,7 @@
 package com.goyals.mercuryscannerapp.utils
 
 import com.goyals.mercuryscannerapp.model.schema.AadharRequest
+import java.lang.Exception
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -10,28 +11,64 @@ object AppUtils {
   fun convertScanDataToAadharData(rawString: String): AadharRequest {
     var dob = ""
     val pinCode: String
-    val uid = rawString.substringAfter("uid=\"")
-      .substringBefore("\" name")
-    val name = rawString.substringAfter("name=\"")
-      .substringBefore("\" gender")
+    val uid = try {
+      rawString.substringAfter("uid=\"")
+        .substringBefore("\" name")
+    } catch (e: Exception) {
+      ""
+    }
+    val name = try {
+      rawString.substringAfter("name=\"")
+        .substringBefore("\" gender")
+    } catch (e: Exception) {
+      ""
+    }
     val gender = rawString.substringAfter("gender=\"")
       .substringBefore("\" yob")
-    val yob = rawString.substringAfter("yob=\"")
-      .substringBefore("\" co")
-    val address = getAddressFromString(rawString.substringAfter("co=\"")
-      .substringBefore("\" pc"))
-    val district = rawString.substringAfter("dist=\"")
-      .substringBefore("\"")
-    val state = rawString.substringAfter("state=\"")
-      .substringBefore("\"")
+    val yob = try {
+      rawString.substringAfter("yob=\"")
+        .substringBefore("\" co")
+    } catch (e: Exception) {
+      ""
+    }
+    val address = try {
+      getAddressFromString(rawString.substringAfter("co=\"")
+        .substringBefore("\" pc"))
+    } catch (e: Exception) {
+      ""
+    }
+    val district = try {
+      rawString.substringAfter("dist=\"")
+        .substringBefore("\"")
+    } catch (e: Exception) {
+      ""
+    }
+    val state = try {
+      rawString.substringAfter("state=\"")
+        .substringBefore("\"")
+    } catch (e: Exception) {
+      ""
+    }
     if (rawString.contains("dob")) {
-      dob = rawString.substringAfter("dob=\"")
-        .substringBefore("\"/>")
-      pinCode = rawString.substringAfter("pc=\"")
-        .substringBefore("\" dob")
+      dob = try {
+        rawString.substringAfter("dob=\"")
+          .substringBefore("\"/>")
+      } catch (e: Exception) {
+        ""
+      }
+      pinCode = try {
+        rawString.substringAfter("pc=\"")
+          .substringBefore("\" dob")
+      } catch (e: Exception) {
+        ""
+      }
     } else {
-      pinCode = rawString.substringAfter("pc=\"")
-        .substringBefore("\"/>")
+      pinCode = try {
+        rawString.substringAfter("pc=\"")
+          .substringBefore("\"/>")
+      } catch (e: Exception) {
+        ""
+      }
     }
     return AadharRequest(address, 0, "updated", district, dob, gender, "", "",
       name, "", pinCode, uid, "", state, 0, yob)
