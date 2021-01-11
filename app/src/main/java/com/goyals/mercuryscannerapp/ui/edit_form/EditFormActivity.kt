@@ -19,6 +19,7 @@ import com.goyals.mercuryscannerapp.utils.AppUtils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_edit_form.*
 import kotlinx.android.synthetic.main.layout_progress.progress_bar
+import java.lang.Exception
 import java.util.Calendar
 
 @AndroidEntryPoint
@@ -190,11 +191,16 @@ class EditFormActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
   }
 
   private fun isAgeValid(): Boolean {
-    return if (et_age.text.toString()
-        .toInt() > 0) {
-      tv_err_age.visibility = View.GONE
-      true
-    } else {
+    return try {
+      if (et_age.text.toString()
+          .toInt() > 0) {
+        tv_err_age.visibility = View.GONE
+        true
+      } else {
+        tv_err_age.visibility = View.VISIBLE
+        false
+      }
+    } catch (e: Exception) {
       tv_err_age.visibility = View.VISIBLE
       false
     }

@@ -13,29 +13,45 @@ object AppUtils {
     val pinCode: String
     val uid = try {
       rawString.substringAfter("uid=\"")
-        .substringBefore("\" name")
+        .substringBefore("\"")
     } catch (e: Exception) {
       ""
     }
     val name = try {
       rawString.substringAfter("name=\"")
-        .substringBefore("\" gender")
+        .substringBefore("\"")
     } catch (e: Exception) {
       ""
     }
-    val gender = rawString.substringAfter("gender=\"")
-      .substringBefore("\" yob")
+    val gender = try {
+      rawString.substringAfter("gender=\"")
+        .substringBefore("\"")
+    } catch (exception: Exception) {
+      ""
+    }
     val yob = try {
       rawString.substringAfter("yob=\"")
-        .substringBefore("\" co")
+        .substringBefore("\"")
     } catch (e: Exception) {
       ""
     }
-    val address = try {
-      getAddressFromString(rawString.substringAfter("co=\"")
-        .substringBefore("\" pc"))
+    var address = try {
+      if (rawString.contains("co=")) {
+        getAddressFromString(rawString.substringAfter("co=\"")
+          .substringBefore("\" pc"))
+      } else {
+        ""
+      }
     } catch (e: Exception) {
       ""
+    }
+    if (address.isEmpty()) {
+      address = try {
+        getAddressFromString(rawString.substringAfter("street=\"")
+          .substringBefore("\" pc"))
+      } catch (exception: Exception) {
+        ""
+      }
     }
     val district = try {
       rawString.substringAfter("dist=\"")
@@ -58,7 +74,7 @@ object AppUtils {
       }
       pinCode = try {
         rawString.substringAfter("pc=\"")
-          .substringBefore("\" dob")
+          .substringBefore("\"")
       } catch (e: Exception) {
         ""
       }
