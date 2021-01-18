@@ -17,7 +17,7 @@
       android:background="@drawable/bg_et_00"
       app:iconifiedByDefault="false"
       app:layout_constraintTop_toTopOf="parent"
-      app:queryHint="Search for name, phone or proof id"
+      app:queryHint="Search for customer id"
       />
 
   <androidx.constraintlayout.widget.ConstraintLayout

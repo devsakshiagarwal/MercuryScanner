@@ -20,11 +20,13 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import com.goyals.mercuryscannerapp.R
+import com.goyals.mercuryscannerapp.model.schema.AadharRequest
 import com.goyals.mercuryscannerapp.ui.edit_form.EditFormActivity
 import com.goyals.mercuryscannerapp.utils.AppUtils
 import java.util.concurrent.Executors
@@ -180,13 +182,24 @@ class AadharScanActivity : AppCompatActivity() {
 
   private fun checkForBarCodeValidations(barcodes: List<Barcode>) {
     if (barcodes.isNotEmpty() && barcodes[0].rawValue!!.length > 100) {
-      FirebaseAnalytics.getInstance(this).logEvent("successful_scan", Bundle())
       val rawString = barcodes[0].rawValue!!
-      Log.d(TAG, rawString)
+      FirebaseCrashlytics.getInstance()
+        .setCustomKey("input_value", rawString)
+      val aadharRequest = if (rawString.isNotEmpty() && rawString.contains(
+          "uid") && rawString.contains("name")) {
+        FirebaseAnalytics.getInstance(this)
+          .logEvent("successful_scan", Bundle())
+        AppUtils.convertScanDataToAadharData(rawString)
+      } else {
+        FirebaseAnalytics.getInstance(this)
+          .logEvent("unsuccessful_scan", Bundle().apply {
+            putString("raw", rawString)
+          })
+        AadharRequest()
+      }
       val editFormActivityIntent =
         Intent(this, EditFormActivity::class.java).apply {
-          putExtra("aadhar_info",
-            AppUtils.convertScanDataToAadharData(rawString))
+          putExtra("aadhar_info", aadharRequest)
         }
       startActivity(editFormActivityIntent)
       finish()

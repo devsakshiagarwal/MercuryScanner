@@ -2,6 +2,7 @@ package com.goyals.mercuryscannerapp.utils
 
 import com.goyals.mercuryscannerapp.model.schema.AadharRequest
 import java.lang.Exception
+import java.lang.NumberFormatException
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -30,28 +31,53 @@ object AppUtils {
       ""
     }
     val yob = try {
-      rawString.substringAfter("yob=\"")
-        .substringBefore("\"")
-    } catch (e: Exception) {
-      ""
-    }
-    var address = try {
-      if (rawString.contains("co=")) {
-        getAddressFromString(rawString.substringAfter("co=\"")
-          .substringBefore("\" pc"))
+      if (rawString.contains("yob")) {
+        rawString.substringAfter("yob=\"")
+          .substringBefore("\"")
       } else {
         ""
       }
-    } catch (e: Exception) {
+    } catch (exception: Exception) {
+      ""
+    } catch (numberException: NumberFormatException) {
       ""
     }
-    if (address.isEmpty()) {
-      address = try {
-        getAddressFromString(rawString.substringAfter("street=\"")
-          .substringBefore("\" pc"))
-      } catch (exception: Exception) {
-        ""
+    val address = try {
+      when {
+        rawString.contains("co=") -> {
+          getAddressFromString(rawString.substringAfter("co=\"")
+            .substringBefore("\" pc"))
+        }
+        rawString.contains("house=") -> {
+          "house = ${
+            getAddressFromString(rawString.substringAfter("house=\"")
+              .substringBefore("\" pc"))
+          }"
+        }
+        rawString.contains("street=") -> {
+          "street = ${
+            getAddressFromString(rawString.substringAfter("street=\"")
+              .substringBefore("\" pc"))
+          }"
+        }
+        rawString.contains("loc=") -> {
+          "loc = ${
+            getAddressFromString(rawString.substringAfter("loc=\"")
+              .substringBefore("\" pc"))
+          }"
+        }
+        rawString.contains("Im=") -> {
+          "Im = ${
+            getAddressFromString(rawString.substringAfter("Im=\"")
+              .substringBefore("\" pc"))
+          }"
+        }
+        else -> {
+          ""
+        }
       }
+    } catch (e: Exception) {
+      ""
     }
     val district = try {
       rawString.substringAfter("dist=\"")
